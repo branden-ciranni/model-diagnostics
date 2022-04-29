@@ -17,14 +17,14 @@ from streamlit_yellowbrick import st_yellowbrick
 
 import os
 
-DATA_PATH = 'data/'
+DATA_PATH = './data/'
 
 st.title('Model Diagnostics on Student Alcoholism')
 
 
 
 def load_data():
-    df = pd.read_csv(os.path.join(DATA_PATH, 'student-mat.csv'))
+    df = pd.read_csv('student-mat.csv')
     df['total_grade'] = df[['G1', 'G2', 'G3']].sum(axis=1)/60
     df['y'] = df.total_grade > 0.65
     return df
