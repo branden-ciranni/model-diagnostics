@@ -10,11 +10,20 @@ Model Diagnostics App for Generalized Linear Models
   ```
 
 2. Create a virtual environment (recommended but not necessary)
-  ```zsh
-  python -m venv env
 
-  env\scripts\activate.bat
-  ```
+  Windows:
+    ```zsh
+    python -m venv env
+
+    env\scripts\activate.bat
+    ```
+  
+  Mac:
+    ```zsh
+    python3 -m venv env
+    
+    source env/bin/activate
+    ```
   
 3. Install the requirements
   ``` zsh
