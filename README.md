@@ -17,12 +17,12 @@ Model Diagnostics App for Generalized Linear Models
   ```
   
 3. Install the requirements
-  ```
+  ``` zsh
   pip install -r requirements.txt
   ```
   
 4. Run the app
-  ```
+  ```zsh
   cd app
   streamlit run app.py
   ```
