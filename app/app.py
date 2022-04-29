@@ -17,7 +17,7 @@ from streamlit_yellowbrick import st_yellowbrick
 
 import os
 
-DATA_PATH = os.path.join(os.getcwd(), '../data/')
+DATA_PATH = os.path.join(os.getcwd(), 'data/')
 
 st.title('Model Diagnostics on Student Alcoholism')
 
