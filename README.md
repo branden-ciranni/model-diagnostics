@@ -29,7 +29,7 @@ Model Diagnostics App for Generalized Linear Models
   
 3. Install the requirements
   ``` zsh
-  pip install -r requirements.txt
+  pip install -r app/requirements.txt
   ```
   
 4. Run the app
