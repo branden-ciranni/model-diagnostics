@@ -93,10 +93,10 @@ if __name__ == '__main__':
 
     X, categorical_selected, numeric_selected = subset_data(df, selected_cols, categorical, numeric)
 
-    X = transform(X, categorical_selected, numeric_selected)
+    X_transform = transform(X, categorical_selected, numeric_selected)
     y = df.y
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(X_transform, y, random_state=42)
     lr = LogisticRegression(random_state=42, C=1/lambda_reg, max_iter=1000)
     clf = lr.fit(X_train,y_train)
 
@@ -136,6 +136,17 @@ if __name__ == '__main__':
 
     visualizer.fit(X_train, y_train)        # Fit the data to the visualizer
     st_yellowbrick(visualizer)
+
+
+
+
+    st.subheader('Correlation Matrix')
+
+    corrmat = X.corr()
+    top_corr_features = corrmat.index
+    fig, ax = plt.subplots()
+    g = sns.heatmap(X[top_corr_features].corr(), cmap="YlGnBu", ax=ax).figure
+    st.pyplot(g)
 
 
 
