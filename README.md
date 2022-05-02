@@ -1,5 +1,5 @@
 # model-diagnostics
-Model Diagnostics App for Generalized Linear Models
+Model Diagnostics App for Logistic Regression.
 
 ## Get this running
 
