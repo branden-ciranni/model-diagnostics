@@ -25,9 +25,7 @@ import os
 
 DATA_PATH = './data/'
 
-st.title('Model Diagnostics on Student Alcoholism')
-
-
+st.title('Model Diagnostics on the effects of Student Alcohol Consumption on Grades')
 
 def load_data():
     df = pd.read_csv(os.path.join(DATA_PATH, 'student-mat.csv'))
