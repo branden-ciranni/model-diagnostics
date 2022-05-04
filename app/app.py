@@ -72,10 +72,7 @@ if __name__ == '__main__':
 
     df = load_data()
 
-    
-    # initial_subset = []
-
-
+    # Select Columns
     categorical = ['school', 'sex', 'address', 'famsize', 'Pstatus', 'Mjob', 'Fjob', 'reason',
                'guardian', 'schoolsup', 'famsup', 'paid', 'activities', 'nursery', 
                'higher', 'internet', 'romantic']
@@ -84,24 +81,30 @@ if __name__ == '__main__':
     cols = categorical + numeric
 
     selected_cols = st.sidebar.multiselect('Choose Features', options = cols, default = cols)
+
+    # Select Lambda
     lambda_reg = st.sidebar.slider('Select Regularization Lambda', 0.0, 5.0, 1.0, step=0.1)
 
     if lambda_reg == 0:
         lambda_reg = 10**(-10)
 
+    # Preprocess Data
     X, categorical_selected, numeric_selected = subset_data(df, selected_cols, categorical, numeric)
 
     X_transform = transform(X, categorical_selected, numeric_selected)
     y = df.y
 
+    # Train Model
     X_train, X_test, y_train, y_test = train_test_split(X_transform, y, random_state=42)
     lr = LogisticRegression(random_state=42, C=1/lambda_reg, max_iter=1000)
     clf = lr.fit(X_train,y_train)
 
-
+    
+    ###########################################################################
+    ############################ Model Equation ###############################
+    ###########################################################################
 
     
-    visualizer = ROCAUC(clf, per_class=False, binary=True)
 
     st.subheader('Fitted Model')
     intercept = '%.2f' % clf.intercept_
@@ -112,15 +115,22 @@ if __name__ == '__main__':
 
     
     
+    ###########################################################################
+    ############################## ROC Curves #################################
+    ###########################################################################
+    
     
     st.subheader('ROC Curves for Model')
 
+    visualizer = ROCAUC(clf, per_class=False, binary=True)
     visualizer.fit(X_train, y_train)        # Fit the training data to the visualizer
     visualizer.score(X_test, y_test)        # Evaluate the model on the test data
     st_yellowbrick(visualizer)      # Finalize and render the figure
 
 
-    
+    ###########################################################################
+    ########################### Learning Curves ###############################
+    ###########################################################################
     
     st.subheader('Learning Curves for Model')
 
@@ -136,7 +146,10 @@ if __name__ == '__main__':
     st_yellowbrick(visualizer)
 
 
-
+    
+    ###########################################################################
+    ########################## Correlation Matrix #############################
+    ###########################################################################
 
     st.subheader('Correlation Matrix')
 
