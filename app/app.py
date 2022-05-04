@@ -1,15 +1,12 @@
-from statistics import mean
 from textwrap import wrap
-from soupsieve import select
 import streamlit as st
 import pandas as pd
 import numpy as np
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder, OneHotEncoder, StandardScaler
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.model_selection import StratifiedKFold
-from sklearn.model_selection import cross_validate
 from sklearn import metrics
 
 
